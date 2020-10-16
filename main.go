@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 
@@ -47,11 +46,8 @@ func handler(request Request) error {
 		return err
 	}
 
-	// Getting the Alarm Name
-	log.Printf("New alarm: %s - Reason: %s", snsMessage.AlarmName, snsMessage.NewStateReason)
 	slackMessage := buildMessage(snsMessage)
 	sendToSlack(slackMessage)
-	log.Println("Notification has been sent")
 	return nil
 }
 
