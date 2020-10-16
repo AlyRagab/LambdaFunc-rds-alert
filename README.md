@@ -18,6 +18,7 @@ aws rds create-db-instance \
 - Create the SNS topic :
 ```
 aws sns create-topic --name rds
+aws sns subscribe --topic-arn $TOPIC_ARN --protocol lambda --notification-endpoint $LAMBDA_ARN
 ```
 - Create the CloudWatch Alarm :
 ```
